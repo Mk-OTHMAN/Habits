@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:habits_app/Screens/Login/login_screen.dart';
 import 'package:habits_app/Screens/Welcome/welcome_screen.dart';
+import 'package:habits_app/Screens/navigation_screen.dart';
 import 'package:habits_app/constants.dart';
 
 void main() => runApp(const MyApp());
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
           )),
-      home: const WelcomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
