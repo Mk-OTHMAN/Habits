@@ -45,6 +45,11 @@ class WelcomeImage extends StatelessWidget {
                               color: kPrimaryColor,
                               fontSize: 40,
                               fontWeight: FontWeight.bold)),
+                      RotateAnimatedText('Habits',
+                          textStyle: GoogleFonts.chewy(
+                              color: kPrimaryColor,
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold)),
                     ],
                     repeatForever: true,
                   ),
@@ -53,14 +58,14 @@ class WelcomeImage extends StatelessWidget {
             ],
           ),
         ),
-        Text(
-          "Habits App",
-          style: GoogleFonts.chewy(
-            color: kPrimaryColor,
-            fontSize: 40,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        // Text(
+        //   "Habits App",
+        //   style: GoogleFonts.chewy(
+        //     color: kPrimaryColor,
+        //     fontSize: 40,
+        //     fontWeight: FontWeight.bold,
+        //   ),
+        // ),
         const SizedBox(height: defaultPadding * 2),
         Row(
           children: [
