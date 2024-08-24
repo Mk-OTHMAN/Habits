@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../components/background.dart';
 import '../../responsive.dart';
@@ -10,14 +11,14 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Background(
+    return Background(
       child: SingleChildScrollView(
         child: SafeArea(
           child: Responsive(
             desktop: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Expanded(
+                const Expanded(
                   child: WelcomeImage(),
                 ),
                 Expanded(
@@ -25,15 +26,15 @@ class WelcomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: 450,
-                        child: LoginAndSignupBtn(),
+                        width: 450.w,
+                        child: const LoginAndSignupBtn(),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-            mobile: MobileWelcomeScreen(),
+            mobile: const MobileWelcomeScreen(),
           ),
         ),
       ),
