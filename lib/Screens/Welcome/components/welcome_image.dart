@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,35 +16,30 @@ class WelcomeImage extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(right: 50),
+          padding: EdgeInsets.only(right: 50.w),
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
+            children: [
               const SizedBox(width: 20.0, height: 100.0),
               const SizedBox(width: 20.0, height: 100.0),
               SizedBox(
-                height: 100,
+                height: 50.h,
                 child: DefaultTextStyle(
-                  style: const TextStyle(
-                    fontSize: 40.0,
-                    fontFamily: 'Horizon',
+                  style: TextStyle(
+                    fontSize: 40.sp,
+                    // fontFamily: 'Horizon',
                   ),
                   child: AnimatedTextKit(
                     animatedTexts: [
-                      RotateAnimatedText('Hi',
-                          textStyle: GoogleFonts.chewy(
-                              color: kPrimaryColor,
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold)),
                       RotateAnimatedText('Welcome',
                           textStyle: GoogleFonts.chewy(
-                              color: kPrimaryColor,
-                              fontSize: 40,
+                              color: Colors.black,
+                              fontSize: 40.sp,
                               fontWeight: FontWeight.bold)),
                       RotateAnimatedText('to',
                           textStyle: GoogleFonts.chewy(
-                              color: kPrimaryColor,
-                              fontSize: 40,
+                              color: Colors.pink,
+                              fontSize: 40.sp,
                               fontWeight: FontWeight.bold)),
                     ],
                     repeatForever: true,
@@ -54,10 +50,10 @@ class WelcomeImage extends StatelessWidget {
           ),
         ),
         Text(
-          "Habits App",
-          style: GoogleFonts.chewy(
-            color: kPrimaryColor,
-            fontSize: 40,
+          "Habits",
+          style: GoogleFonts.dmSerifText(
+            color: Colors.pink,
+            fontSize: 60.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
