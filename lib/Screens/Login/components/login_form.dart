@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:habits_app/Screens/Login/loginAuth/login_auth.dart';
+import 'package:habits_app/Screens/pages/homePage.dart';
 
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
@@ -16,6 +18,8 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
   bool visabilty = true;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -28,6 +32,7 @@ class _LoginFormState extends State<LoginForm> {
                 return 'Please enter your email';
               }
             },
+            controller: emailController,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
@@ -48,6 +53,7 @@ class _LoginFormState extends State<LoginForm> {
                   return 'Please enter your password';
                 }
               },
+              controller: passwordController,
               textInputAction: TextInputAction.done,
               obscureText: visabilty,
               cursorColor: kPrimaryColor,
@@ -82,15 +88,17 @@ class _LoginFormState extends State<LoginForm> {
           const SizedBox(height: defaultPadding),
           ElevatedButton(
             onPressed: () {
+              var result;
               if (_formKey.currentState!.validate()) {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) {
-                //       return const NavigationScreen();
-                //     },
-                //   ),
-                // );
+                setState(() async {
+                  result = await login(
+                      email: emailController.text,
+                      password: passwordController.text);
+                });
+                if (result == 'Success') {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const HomePage()));
+                }
               }
             },
             child: Text(

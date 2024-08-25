@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:habits_app/Screens/Signup/SinUp_Auth/sign_up_auth.dart';
 
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
@@ -16,6 +18,9 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
   bool visabilty = true;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +34,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 return 'Please enter your email';
               }
             },
+            controller: emailController,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
@@ -49,6 +55,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   return 'Please enter your password';
                 }
               },
+              controller: passwordController,
               textInputAction: TextInputAction.done,
               obscureText: visabilty,
               cursorColor: kPrimaryColor,
@@ -84,7 +91,9 @@ class _SignUpFormState extends State<SignUpForm> {
           ElevatedButton(
             onPressed: () {
               if (_formKey.currentState!.validate()) {
-                // _formKey.currentState!.save();
+                registration(
+                    email: emailController.text,
+                    password: passwordController.text);
               }
             },
             child: Text("Sign Up".toUpperCase()),
